@@ -1,6 +1,6 @@
 var searchYouTube = (options, callback) => {
   $.ajax({
-    url: "https://www.googleapis.com/youtube/v3/search",
+    url: 'https://www.googleapis.com/youtube/v3/search',
     data: {
       q: options['query'],
       maxResults: options['max'] ? options['max'] : 5,
@@ -14,10 +14,10 @@ var searchYouTube = (options, callback) => {
       callback(data.items);
       console.log('WE GOT VIDEOS!');
     },
-    error: function(){
+    error: function() {
       console.error('YOU HAVE FAILED!');
     }
-  })
+  });
 };
 
 window.searchYouTube = searchYouTube;
