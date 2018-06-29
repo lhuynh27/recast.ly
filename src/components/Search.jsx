@@ -6,22 +6,31 @@ class Search extends React.Component {
     };
   }
   
-  saveQuery () {
+  saveQuery (input) {
     this.setState({
-      query: ''
-    });
+      query: input
+    }); 
   }
   
   liveSearch (e) {
-    console.log(e.target.value);
+    //console.log(e.target.value);
+    this.saveQuery(e.target.value);
   }
   
+  searchThings(things) {
+    var options = {
+      query: this.state,
+      max: 5,
+      key: window.YOUTUBE_API_KEY
+    };
+    this.props.searchYouTube(options, this.props.searchCallback);
+  }
   
   render() {
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" type="text" onChange={this.liveSearch} />
-        <button className="btn hidden-sm-down">
+        <input className="form-control" type="text" onChange={this.liveSearch.bind(this)} />
+        <button className="btn hidden-sm-down" onClick={this.searchThings.bind(this)}>
           <span className="glyphicon glyphicon-search"></span>
         </button>
       </div>

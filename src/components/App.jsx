@@ -8,6 +8,12 @@ class App extends React.Component {
     };
   }  
   
+  searchCallback (dataItems) {
+    this.setState({
+      videos: dataItems
+    });
+  }
+  
   clickTitle (video) {
     this.setState({
       currentVideo: video
@@ -20,7 +26,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search searchYouTube={this.props.searchYouTube} />
+            <Search searchYouTube={this.props.searchYouTube} searchCallback={this.searchCallback.bind(this)} />
           </div>
         </nav>
         <div className="row">
